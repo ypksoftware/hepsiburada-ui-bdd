@@ -1,0 +1,1 @@
+var index = {"Tags":{"HB_All":["specs/Hepsiburada/Case2/hepsiburadaCase2.html"],"HB_TS_002_SMK":["specs/Hepsiburada/Case2/hepsiburadaCase2.html"],"Smoke":["specs/Hepsiburada/Case2/hepsiburadaCase2.html"]},"Specs":{"HEPSIBURADA WEBUI SCENARIO Specification Heading":["specs/Hepsiburada/Case2/hepsiburadaCase2.html"]}};

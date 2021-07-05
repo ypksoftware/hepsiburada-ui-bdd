@@ -1,0 +1,62 @@
+apply plugin: 'java'
+apply plugin: 'gauge'
+
+group = "gauge-example"
+version = "0.1"
+description = "Simple example Gauge Java Selenium automated tests"
+
+ext {
+    javaVersion = '1.8'
+    junitVersion = '4.12'
+    gaugeJavaVersion = '0.6.5'
+    seleniumVersion = '3.7.1'
+    webDriverManagerVersion = '1.7.2'
+    slf4jVersion = '1.7.25'
+    logbackVersion = '1.2.3'
+}
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.thoughtworks.gauge.gradle:gauge-gradle-plugin:1.5.0"
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile "junit:junit:$junitVersion"
+    testCompile "org.slf4j:slf4j-api:$slf4jVersion"
+    testCompile "com.thoughtworks.gauge:gauge-java:$gaugeJavaVersion"
+    testCompile "io.github.bonigarcia:webdrivermanager:$webDriverManagerVersion"
+    testCompile ("org.seleniumhq.selenium:selenium-java:$seleniumVersion") {
+        // exclude the unused drivers (IE, Edge, Safari, Firefox, Opera)
+        exclude group: 'org.seleniumhq.selenium', module: 'selenium-edge-com.example.driver'
+        exclude group: 'org.seleniumhq.selenium', module: 'selenium-firefox-com.example.driver'
+        exclude group: 'org.seleniumhq.selenium', module: 'selenium-ie-com.example.driver'
+        exclude group: 'org.seleniumhq.selenium', module: 'selenium-opera-com.example.driver'
+        exclude group: 'org.seleniumhq.selenium', module: 'selenium-safari-com.example.driver'
+    }
+
+    testRuntime "ch.qos.logback:logback-classic:$logbackVersion"
+    testRuntime sourceSets.test.output
+}
+
+// configure gauge task here (optional)
+gauge {
+    specsDir = 'specs'
+    //inParallel = true
+    //nodes = 2
+    //env = 'dev'
+    //tags = 'tag1'
+    //additionalFlags = '--verbose'
+    additionalFlags = '--log-level warn'
+    //gaugeRoot = '/opt/gauge'
+}

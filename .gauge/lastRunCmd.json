@@ -1,0 +1,8 @@
+[
+	"D:\\gauge\\gauge.exe",
+	"run",
+	"--machine-readable",
+	"--hide-suggestion",
+	"--simple-console",
+	"D:/hepsiburada/hepsiburada-ui-bdd/specs/Hepsiburada/Case2/hepsiburadaCase2.spec:10"
+]
